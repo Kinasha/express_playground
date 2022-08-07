@@ -8,12 +8,13 @@
 </head>
 <body>
     <p id="p"></p>
+    <iframe src="http://localhost:3001/c.html#getData" frameborder="0" style="display: none"></iframe>
     <script>
         const p = document.querySelector('#p')
-        const iframe = document.createElement('iframe')
-        iframe.src = 'http://localhost:3001/c.html#getData'
-        iframe.style.display = 'none'
-        document.body.appendChild(iframe)
+        // const iframe = document.createElement('iframe')
+        // iframe.src = 'http://localhost:3001/c.html#getData'
+        // iframe.style.display = 'none'
+        // document.body.appendChild(iframe)
         function checkHash(){
             if(location.hash){
                 p.innerHTML = window.decodeURIComponent(location.hash.substring(1))

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p">hello world</p>
+    <script>
+        const p = document.querySelector("#p")
+        document.domain = 'zhangweicheng.com'
+        function loadFunc(){
+            const iframe = document.querySelector('#iframe')
+            alert('fetching port 3001 message')
+            console.log(iframe)
+            p.innerHTML= iframe.contentWindow.msg
+        }
+    </script>
+    <iframe id="iframe" src="https://www.zhangweicheng.com:3001/b.html" frameborder="0" style="display: none;" onload="loadFunc()"></iframe>
+</body>
+</html>

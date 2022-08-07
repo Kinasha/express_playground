@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP 跨域</title>
+</head>
+<body>
+    <button id="btn">click to cors</button>
+    <p id="text">foobar</p>
+    <script>
+        const btn = document.querySelector('#btn')
+        const text  = document.querySelector("#text")
+        function myFunction(data){
+            alert('myFunction is runing')
+            setTimeout(() => {
+                text.innerHTML = data.data
+            }, 2000);
+        }
+    </script>
+    <script src="http://localhost:3001?callback=myFunction&key=123"></script>
+</body>
+</html>

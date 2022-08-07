@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #iframe {
+            border: 2px solid greenyellow;
+            width: 500px;
+            height: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #father {
+            border: 2px solid darkturquoise;
+            width: 500px;
+            height: 200px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <p>this is port 3000</p>
+        <span id="span"></span>
+        <input type="text" id="input">
+        <button id="button">send message</button>
+    </div>
+    <iframe id="iframe" src="http://localhost:3001/index01.html" frameborder="0"></iframe>
+    <script>
+        const span = document.querySelector('#span')
+        const btn = document.querySelector("#button")
+        const input = document.querySelector("#input")
+        const iframe = document.querySelector("#iframe").contentWindow
+        btn.addEventListener('click',()=>{
+            const msg = input.value;
+            iframe.postMessage('收到信息：' + msg + ' --from 3000 port！😨', 'http://localhost:3001');
+        })
+        function receiveMessage(e){
+            if(e.origin!=='http://localhost:3001'){
+                return false
+            }
+            const data = e.data
+            span.data = data
+        }
+        window.addEventListener('message',receiveMessage,false)
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p">hello world</p>
+    <script>
+        const p = document.querySelector('#p')
+        const iframe = document.createElement('iframe')
+        iframe.src = "http://localhost:3001/index02.html"
+        iframe.style.display = 'none'
+        document.body.appendChild(iframe)
+        let isFirst = true
+        function loadFunc(){
+            if(isFirst){
+                isFirst = false
+                iframe.src = "http://localhost:3000/index01.html"
+            }else{
+                p.innerHTML = iframe.contentWindow.name
+                iframe.contentWindow.close()
+                document.removeChild(iframe)
+            }
+        }
+        iframe.onload = loadFunc
+    </script>
+</body>
+</html>
